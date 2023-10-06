@@ -1,18 +1,14 @@
 <?php
 
+use App\Http\Controllers\FuncionarioController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
-Route::get('/', function () {
-    return view('welcome');
+Route::controller(FuncionarioController::class)->group(function() {
+    Route::get('/funcionarios', 'index')->name('funcionarios.index');
+    Route::get('/funcionarios/criar', 'create')->name('funcionarios.create');
+    Route::post('/funcionarios', 'store')->name('funcionarios.store');
+    Route::get('/funcionarios/editar/{id}', 'edit')->name('funcionarios.edit');
+    Route::put('/funcionarios/update/{id}', 'update')->name('funcionarios.update');
+    Route::delete('/funcionarios/delete/{id}', 'destroy')->name('funcionarios.destroy');
 });
+
