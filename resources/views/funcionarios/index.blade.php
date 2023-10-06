@@ -26,7 +26,7 @@
         </thead>
         <tbody>
             @foreach ($funcionarios as $funcionario)
-                <tr>
+                <tr class="tr-funcionario-{{ $funcionario->id }}">
                     <th scope="row">{{ $funcionario->id }}</th>
                     <td>{{ $funcionario->nome }}</td>
                     <td>{{ $funcionario->cargo }}</td>
@@ -100,8 +100,7 @@
 
                         <!--MODAL APAGAR-->
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                            data-bs-target="#staticBackdrop">
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" onclick="abrirModal()">
                             Apagar
                         </button>
 
@@ -121,7 +120,7 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                             data-bs-dismiss="modal">Voltar</button>
-                                        <button type="button" class="btn btn-danger">Apagar dados</button>
+                                        <button type="button" class="btn btn-danger" onclick="apagarFuncionario({{ $funcionario->id }})">Apagar dados</button>
                                     </div>
                                 </div>
                             </div>
@@ -135,5 +134,7 @@
     </table>
     <p><a href="{{ route('funcionarios.create') }}">Criar funcionario</a></p>
 
-
+    <input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}" />
+    <script src="{{asset('js/apagarfuncionarios.js')}}"></script>
+    
 @endsection

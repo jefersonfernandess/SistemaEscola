@@ -39,6 +39,17 @@ class FuncionarioController extends Controller
     }
 
     public function destroy($id) {
-        
+        $funcionario = Funcionario::find($id);
+        if (!isset($funcionario)) {
+            $response['error'] = true;
+            $response['msg'] = 'Não encontrado';
+            return response()->json($response, 404);
+        }
+
+        if (isset($funcionario) && $funcionario->delete()) {
+            $response['error'] = false;
+            $response['msg'] = 'Deletado com sucesso!';
+            return response()->json($response, 200);
+        }
     }
 }
