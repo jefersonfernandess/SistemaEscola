@@ -89,7 +89,7 @@
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
                                                     data-bs-dismiss="modal">Fechar</button>
-                                                <button type="submit" class="btn btn-primary">Atualizar</button>
+                                                <button type="submit" class="btn btn-primary" onclick="this.disabled = true; this.form.submit();">Atualizar</button>
                                             </div>
                                         </form>
                                     </div>
@@ -99,35 +99,32 @@
                         <!--FIM MODAL EDITAR-->
 
                         <!--MODAL APAGAR-->
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" onclick="abrirModal()">
-                            Apagar
-                        </button>
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
-                            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                            data-bs-target="#apagarmodal-{{ $funcionario->id }}" data-bs-whatever="@mdo">Apagar</button>
+                        <div class="modal fade" id="apagarmodal-{{ $funcionario->id }}" tabindex="-1"
+                            aria-labelledby="exampleModalLabel1" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="staticBackdropLabel">Remover funcionario</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel1">Você realmente deseja apagar esse funcionario?</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        Você deseja apagar os dados desse funcionário?
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">Voltar</button>
-                                        <button type="button" class="btn btn-danger" onclick="apagarFuncionario({{ $funcionario->id }})">Apagar dados</button>
+                                        <form action="{{ route('funcionarios.destroy', $funcionario->id) }}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Fechar</button>
+                                                <button type="submit" class="btn btn-danger" onclick="this.disabled = true; this.form.submit();">Apagar</button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-                    </td>
-                </tr>
+                    
             @endforeach
 
         </tbody>
@@ -136,5 +133,6 @@
 
     <input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}" />
     <script src="{{asset('js/apagarfuncionarios.js')}}"></script>
+    
     
 @endsection

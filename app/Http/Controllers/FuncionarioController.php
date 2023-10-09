@@ -22,6 +22,7 @@ class FuncionarioController extends Controller
     }
 
     public function edit($id) {
+        dd($id);
         $funcionario = Funcionario::find($id);
         if($funcionario) {
             return view('funcionarios.edit', compact('funcionario'));
@@ -40,16 +41,14 @@ class FuncionarioController extends Controller
 
     public function destroy($id) {
         $funcionario = Funcionario::find($id);
-        if (!isset($funcionario)) {
-            $response['error'] = true;
-            $response['msg'] = 'Não encontrado';
-            return response()->json($response, 404);
-        }
 
-        if (isset($funcionario) && $funcionario->delete()) {
-            $response['error'] = false;
-            $response['msg'] = 'Deletado com sucesso!';
-            return response()->json($response, 200);
+        if (!$funcionario) {
+            return redirect()->route('funcionarios.index')->with('error', 'Funcionário não encontrado');
         }
+    
+        $funcionario->delete();
+    
+        return redirect()->route('funcionarios.index')->with('success', 'Funcionário apagado com sucesso');
+
     }
 }

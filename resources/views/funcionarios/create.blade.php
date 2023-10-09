@@ -53,7 +53,7 @@
                 </div>
             </div>
             <div class="row mb-3">
-                <button type="submit" class="btn btn-primary">Cadastrar funcionario</button>
+                <button type="submit" id="botaoenviar" class="btn btn-primary" onclick="this.disabled = true; this.form.submit();">Cadastrar funcionario</button>
             </div>
         </form>
     </div>
