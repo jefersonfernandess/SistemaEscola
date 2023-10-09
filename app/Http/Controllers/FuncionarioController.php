@@ -21,15 +21,6 @@ class FuncionarioController extends Controller
         return redirect()->route('funcionarios.index')->with('msg', 'Funcionario cadastrado com sucesso');
     }
 
-    public function edit($id) {
-        dd($id);
-        $funcionario = Funcionario::find($id);
-        if($funcionario) {
-            return view('funcionarios.edit', compact('funcionario'));
-        }
-        return redirect()->route('funcionarios.index')->with('msg', 'Funcionario não encontrado!');
-    }
-
     public function update(Request $request, $id) {
         $funcionario = Funcionario::find($id);
         if(!$funcionario) {

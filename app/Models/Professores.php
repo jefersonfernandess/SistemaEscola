@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Funcionario extends Model
+class Professores extends Model
 {
     use HasFactory;
 
-    protected $table = 'funcionarios';
-    protected $fillable = ['nome', 'cargo', 'telefone', 'descricao', 'nivel'];
+    protected $table = 'professores';
+    protected $fillable = ['nome', 'diciplina', 'telefone'];
 
     public static function boot()
     {
@@ -18,19 +18,15 @@ class Funcionario extends Model
 
         static::creating(function ($model) {
             $model->nome = strtoupper($model->nome);
-            $model->cargo = strtoupper($model->cargo);
+            $model->diciplina = strtoupper($model->diciplina);
             $model->telefone = strtoupper($model->telefone);
-            $model->descricao = strtoupper($model->descricao);
-            $model->nivel = strtoupper($model->nivel);
             
         });
 
         static::updating(function ($model) {
             $model->nome = strtoupper($model->nome);
-            $model->cargo = strtoupper($model->cargo);
+            $model->diciplina = strtoupper($model->diciplina);
             $model->telefone = strtoupper($model->telefone);
-            $model->descricao = strtoupper($model->descricao);
-            $model->nivel = strtoupper($model->nivel);
         });
     }
 }
