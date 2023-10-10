@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AlunoController;
 use App\Http\Controllers\FuncionarioController;
 use App\Http\Controllers\ProfessoresController;
 use Illuminate\Support\Facades\Route;
@@ -18,5 +19,13 @@ Route::controller(ProfessoresController::class)->group(function() {
     Route::post('/professores/', 'store')->name('professores.store');
     Route::put('/professores/atualizar/{id}', 'update')->name('professores.update');
     Route::delete('/professores/apagar/{id}', 'destroy')->name('professores.destroy');
+});
+
+Route::controller(AlunoController::class)->group(function() {
+    Route::get('/alunos', 'index')->name('alunos.index');
+    Route::get('/alunos/criar', 'create')->name('alunos.create');
+    Route::post('/alunos/', 'store')->name('alunos.store');
+    Route::put('/alunos/atualizar/{id}', 'update')->name('alunos.update');
+    Route::delete('/alunos/apagar/{id}', 'destroy')->name('alunos.destroy');
 });
 

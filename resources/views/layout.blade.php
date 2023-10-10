@@ -56,6 +56,7 @@
     
         @yield('content')
         @yield('content-professores')
+        @yield('content-alunos')
     </div>
 
     <!--BOOTSTRAP JS-->
