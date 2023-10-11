@@ -24,12 +24,7 @@
                     <input type="text" name="nome" class="form-control" id="nome">
                 </div>
             </div>
-            <div class="row mb-3">
-                <div class="col-sm-12">
-                    <label for="cargo" class="col-sm-2 col-form-label">Endereço</label>
-                    <input type="text" name="endereco" class="form-control" id="endereco">
-                </div>
-            </div>
+            
             <div class="row mb-3">
                 <div class="col-sm-12">
                     <label for="telefone" class="col-sm-2 col-form-label">Data de nascimento</label>

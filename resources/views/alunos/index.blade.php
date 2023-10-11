@@ -27,7 +27,6 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Nome</th>
-                <th scope="col">Endereço</th>
                 <th scope="col">Data de nascimento</th>
                 <th scope="col">Responsavel</th>
                 <th scope="col">Telefone 1</th>
@@ -40,7 +39,6 @@
                 <tr {{ $aluno->id }}>
                     <th scope="row">{{ $aluno->id }}</th>
                     <td>{{ $aluno->nome }}</td>
-                    <td>{{ $aluno->endereco }}</td>
                     <td>{{ $aluno->nascimento }}</td>
                     <td>{{ $aluno->nomeResponsavel }}</td>
                     <td>{{ $aluno->telefoneUm }}</td>
@@ -69,13 +67,7 @@
                                                         id="nome" value="{{ $aluno->nome }}">
                                                 </div>
                                             </div>
-                                            <div class="row mb-3">
-                                                <div class="col-sm-12">
-                                                    <label for="cargo" class="col-sm-2 col-form-label">Endereço</label>
-                                                    <input type="text" name="endereco" class="form-control to-uppercase"
-                                                        id="cargo" value="{{ $aluno->endereco }}">
-                                                </div>
-                                            </div>
+                                            
                                             <div class="row mb-3">
                                                 <div class="col-sm-12">
                                                     <label for="telefone" class="col-sm-2 col-form-label">Data de nascimento</label>
